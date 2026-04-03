@@ -26,6 +26,9 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String password;
+    private String twoFactorCode;          // kod za 2FA
+    private long twoFactorExpiryTime;      // vreme isteka koda
+    private boolean twoFactorVerified;     // da li je 2FA verifikovan
 
     @Column(nullable = false)
     private ZonedDateTime created;

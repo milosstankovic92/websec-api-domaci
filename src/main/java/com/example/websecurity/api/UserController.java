@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/users") // endpoint će biti /users/login
 @RequiredArgsConstructor
 @Slf4j
 public class UserController {
@@ -28,5 +28,4 @@ public class UserController {
         log.info("User Controller: Received login request: {}", request);
         return ResponseEntity.ok(authenticationFacade.authenticate(request));
     }
-
 }

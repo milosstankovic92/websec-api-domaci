@@ -30,4 +30,20 @@ public class ReviewService {
     public List<Review> getReviewsByUser(Long userId) {
         return reviewRepository.findByUserId(userId);
     }
+
+    public Review getReviewByIdForUser(Long reviewId, Long userId) {
+        return reviewRepository.findByIdAndUserId(reviewId, userId)
+                .orElseThrow(() -> new WebSecMissingDataException("Forbidden"));
+    }
+
+    public Review updateReviewForUser(Long reviewId, Long userId, Review updatedReview) {
+        Review review = reviewRepository.findByIdAndUserId(reviewId, userId)
+                .orElseThrow(() -> new WebSecMissingDataException("Forbidden"));
+
+        // Update fields
+        review.setRating(updatedReview.getRating());
+        review.setReviewText(updatedReview.getReviewText());
+
+        return reviewRepository.save(review);
+    }
 }
