@@ -57,6 +57,7 @@ public class ReviewController {
         user.getEmail(),
         reviewId,
         updateReviewRequest.getReviewText());
+        ReviewResponse reviewResponse = reviewFacade.updateReview(reviewId, updateReviewRequest); return ResponseEntity.ok(reviewResponse);
     }
 
     @Operation(summary = "Get all reviews for user", description = "Get all reviews for user")
