@@ -53,9 +53,10 @@ public class ReviewController {
         if (user.getId() != userId) {
             return ResponseEntity.badRequest().build();
         }
-        log.info("Review Controller: User:" + user.getEmail() + "requested an update for review with id: " + reviewId + " and text:" + updateReviewRequest.getReviewText());
-        ReviewResponse reviewResponse = reviewFacade.updateReview(reviewId, updateReviewRequest);
-        return ResponseEntity.ok(reviewResponse);
+        log.info("Review Controller: User: {} requested an update for review with id: {} and text: {}",
+        user.getEmail(),
+        reviewId,
+        updateReviewRequest.getReviewText());
     }
 
     @Operation(summary = "Get all reviews for user", description = "Get all reviews for user")
